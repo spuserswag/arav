@@ -1,0 +1,53 @@
+Using fixed seed: 43
+Output directory: outputs/v51
+Loaded 35600 rows, 17 features, 114 segments.
+  price features : ['mid_price', 'micro_price', 'fractional_price', 'spread', 'obi_1', 'obi_10', 'obi_diff', 'tod_sin', 'tod_cos', 'logret_1000ms', 'logret_5000ms', 'logret_15000ms']
+  vol features   : ['volatility_fast', 'volatility_med', 'volatility_slow', 'vol_of_vol', 'obi_momentum']
+Split — train: 24920, val: 5340, test: 5340
+  Saved scaler → outputs/v51/scaler.pkl
+Sequences — train: (23175, 30, 17), val: (4823, 30, 17), test (stride=30): (151, 30, 17)
+Using device: cpu
+Model parameters: 145,601
+  Class balance — pos: 11827, neg: 11348, pos_weight: 0.959
+
+=== Vol-Transformer — Bitcoin Up/Down ===
+Epoch   1/25 | loss 0.6768/0.6774 | AUC 0.5940/0.5043 | lr 3.00e-04
+  ✓ Checkpoint saved (val AUC=0.5043)
+Epoch   2/25 | loss 0.6671/0.6722 | AUC 0.6292/0.5580 | lr 3.00e-04
+  ✓ Checkpoint saved (val AUC=0.5580)
+Epoch   3/25 | loss 0.6567/0.6807 | AUC 0.6612/0.5403 | lr 3.00e-04
+Epoch   4/25 | loss 0.6445/0.6806 | AUC 0.6874/0.5708 | lr 3.00e-04
+  ✓ Checkpoint saved (val AUC=0.5708)
+Epoch   5/25 | loss 0.6352/0.6902 | AUC 0.7156/0.5482 | lr 3.00e-04
+Epoch   6/25 | loss 0.6265/0.7002 | AUC 0.7204/0.5322 | lr 3.00e-04
+Epoch   7/25 | loss 0.6163/0.7114 | AUC 0.7422/0.5324 | lr 3.00e-04
+Epoch   8/25 | loss 0.6053/0.7156 | AUC 0.7608/0.5366 | lr 1.50e-04
+Epoch   9/25 | loss 0.5952/0.7491 | AUC 0.7672/0.5088 | lr 1.50e-04
+Early stopping at epoch 9.
+  Saved training curves → outputs/v51/training_curves.png
+
+Loaded best checkpoint (epoch 4).
+Best threshold (val): 0.47
+
+Test Accuracy : 0.4702
+Test ROC-AUC  : 0.4722
+
+Classification Report:
+               precision    recall  f1-score   support
+
+         0.0       0.59      0.28      0.38        87
+         1.0       0.43      0.73      0.54        64
+
+    accuracy                           0.47       151
+   macro avg       0.51      0.51      0.46       151
+weighted avg       0.52      0.47      0.45       151
+
+Confusion Matrix:
+ [[24 63]
+ [17 47]]
+  Saved metrics summary → outputs/v51/metrics_summary.txt
+  Saved attention heatmap → outputs/v51/attention_heatmap.png
+  Running t-SNE on 1500 samples (perplexity=30) …
+  Saved t-SNE plot → outputs/v51/tsne.png
+
+All outputs saved to: outputs/v51/

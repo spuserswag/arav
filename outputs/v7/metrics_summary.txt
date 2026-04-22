@@ -1,0 +1,20 @@
+Version dir      : outputs/v7
+CSV              : advanced_orderflow_data.csv
+Horizon          : 5
+Seq len          : 15
+Pos encoding     : sinusoidal
+Attn diag bias   : 0.0
+Best epoch (AUC) : 8
+Best val AUC     : 0.5823
+Threshold        : 0.52
+Test Accuracy    : 0.5356
+Test AUC         : 0.5644
+
+              precision    recall  f1-score   support
+
+         0.0       0.60      0.35      0.45      1168
+         1.0       0.51      0.74      0.60      1054
+
+    accuracy                           0.54      2222
+   macro avg       0.55      0.55      0.52      2222
+weighted avg       0.56      0.54      0.52      2222

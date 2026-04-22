@@ -1,0 +1,6 @@
+{
+  "seq_len": 40,
+  "encoding": "sinusoidal",
+  "attn_diagonal_bias": 0.0,
+  "seed": 688932882
+}

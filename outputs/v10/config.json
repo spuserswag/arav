@@ -1,0 +1,71 @@
+{
+  "csv_file": "data/part2/advanced_orderflow_ws.csv",
+  "data": {
+    "step_seconds": 0.5,
+    "horizon_seconds": 15.0,
+    "backward_seconds": 120.0,
+    "gap_seconds": 2.0,
+    "deadband_bps": 0.5,
+    "vol_fast_seconds": 5.0,
+    "vol_med_seconds": 30.0,
+    "vol_of_vol_seconds": 30.0,
+    "ret_horizons_seconds": [
+      1.0,
+      5.0,
+      15.0
+    ]
+  },
+  "seq_len": 30,
+  "test_stride": 30,
+  "val_ratio": 0.15,
+  "test_ratio": 0.15,
+  "feature_cols": [
+    "micro_mid_bps",
+    "spread_bps",
+    "fractional_price",
+    "obi_1",
+    "obi_10",
+    "obi_diff",
+    "logret_1000ms",
+    "logret_5000ms",
+    "logret_15000ms",
+    "volatility_fast",
+    "volatility_med",
+    "volatility_slow",
+    "vol_of_vol",
+    "obi_momentum"
+  ],
+  "vol_feature_cols": [
+    "volatility_fast",
+    "volatility_med",
+    "volatility_slow",
+    "vol_of_vol",
+    "obi_momentum"
+  ],
+  "model": {
+    "d_model": 96,
+    "nhead": 6,
+    "num_layers": 3,
+    "dim_feedforward": 384,
+    "dropout": 0.2,
+    "pos_encoding": "sinusoidal",
+    "attn_diagonal_bias": 0.0,
+    "conv_kernel": 3
+  },
+  "training": {
+    "n_epochs": 25,
+    "batch_size": 128,
+    "lr": 0.0003,
+    "weight_decay": 0.0001,
+    "patience": 5,
+    "seed": 42
+  },
+  "results": {
+    "best_epoch_auc": 2,
+    "best_val_auc": 0.5530686885655988,
+    "test_accuracy": 0.4966887417218543,
+    "test_auc": 0.4780890804597701,
+    "threshold": 0.53,
+    "n_params": 472993
+  }
+}

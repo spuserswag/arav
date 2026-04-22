@@ -1,0 +1,20 @@
+Version dir      : outputs/v10
+CSV              : data/part2/advanced_orderflow_ws.csv
+Horizon (s)      : 15.0
+Step (s)         : 0.5
+Seq len (steps)  : 30  (~ 15.0s context)
+Seed             : 42
+Best epoch (AUC) : 2
+Best val AUC     : 0.5531
+Threshold        : 0.53
+Test Accuracy    : 0.4967
+Test AUC         : 0.4781
+
+              precision    recall  f1-score   support
+
+         0.0       0.58      0.47      0.52        87
+         1.0       0.42      0.53      0.47        64
+
+    accuracy                           0.50       151
+   macro avg       0.50      0.50      0.50       151
+weighted avg       0.51      0.50      0.50       151

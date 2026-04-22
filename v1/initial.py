@@ -1,4 +1,3 @@
-import argparse
 import time
 from datetime import datetime, timedelta, timezone
 from typing import List, Tuple
@@ -20,7 +19,7 @@ from sklearn.preprocessing import StandardScaler
 from dataloader import load_data
 
 
-CSV_FILE = "data/part2/advanced_orderflow_ws.csv"
+CSV_FILE = "advanced_orderflow_data.csv"
 
 
 def collect_orderflow_data(
@@ -282,17 +281,10 @@ def main() -> None:
     If you want to collect fresh data first, call collect_orderflow_data()
     before running the modeling steps.
     """
-    p = argparse.ArgumentParser(description="LogReg + RandomForest baselines on order-flow CSV.")
-    p.add_argument("--csv", type=str, default=CSV_FILE,
-                   help=f"Path to CSV (default: {CSV_FILE})")
-    p.add_argument("--train-ratio", type=float, default=0.7)
-    p.add_argument("--n-splits", type=int, default=5)
-    args = p.parse_args()
-
     # Uncomment this line if you want to (re)collect data from the exchange:
     # collect_orderflow_data(symbol="BTC/USDT", poll_interval=5, n_iterations=15000)
 
-    df, X, y, feature_cols = load_and_prepare_data(args.csv, horizon=5)
+    df, X, y, feature_cols = load_and_prepare_data(CSV_FILE, horizon=5)
     print(f"Loaded {len(df)} rows with {len(feature_cols)} features.")
 
     if len(df) == 0 or X.size == 0:
@@ -303,7 +295,7 @@ def main() -> None:
         return
 
     X_train, X_test, y_train, y_test = train_test_split_time_series(
-        X, y, train_ratio=args.train_ratio
+        X, y, train_ratio=0.7
     )
     print(f"Train size: {X_train.shape}, Test size: {X_test.shape}")
 
@@ -314,7 +306,7 @@ def main() -> None:
         )
         return
 
-    time_series_cross_validation(X_train, y_train, n_splits=args.n_splits)
+    time_series_cross_validation(X_train, y_train, n_splits=5)
     run_logistic_regression(X_train, X_test, y_train, y_test)
     run_random_forest(X_train, X_test, y_train, y_test)
 

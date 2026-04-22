@@ -1,0 +1,54 @@
+Using fixed seed: 42
+Output directory: outputs/v44
+Loaded 35600 rows, 17 features, 114 segments.
+  price features : ['mid_price', 'micro_price', 'fractional_price', 'spread', 'obi_1', 'obi_10', 'obi_diff', 'tod_sin', 'tod_cos', 'logret_1000ms', 'logret_5000ms', 'logret_15000ms']
+  vol features   : ['volatility_fast', 'volatility_med', 'volatility_slow', 'vol_of_vol', 'obi_momentum']
+Split — train: 24920, val: 5340, test: 5340
+  Saved scaler → outputs/v44/scaler.pkl
+Sequences — train: (23175, 30, 17), val: (4823, 30, 17), test (stride=30): (151, 30, 17)
+Using device: cpu
+Model parameters: 145,601
+  Class balance — pos: 11827, neg: 11348, pos_weight: 0.959
+
+=== Vol-Transformer — Bitcoin Up/Down ===
+Epoch   1/25 | loss 0.6722/0.6829 | AUC 0.6257/0.5122 | lr 3.00e-04
+  ✓ Checkpoint saved (val AUC=0.5122)
+Epoch   2/25 | loss 0.6561/0.6927 | AUC 0.6767/0.5463 | lr 3.00e-04
+  ✓ Checkpoint saved (val AUC=0.5463)
+Epoch   3/25 | loss 0.6418/0.7042 | AUC 0.7114/0.5185 | lr 3.00e-04
+Epoch   4/25 | loss 0.6233/0.7276 | AUC 0.7381/0.5135 | lr 3.00e-04
+Epoch   5/25 | loss 0.6049/0.7376 | AUC 0.7763/0.5467 | lr 3.00e-04
+  ✓ Checkpoint saved (val AUC=0.5467)
+Epoch   6/25 | loss 0.5827/0.7780 | AUC 0.8013/0.5303 | lr 3.00e-04
+Epoch   7/25 | loss 0.5614/0.7847 | AUC 0.8295/0.5403 | lr 3.00e-04
+Epoch   8/25 | loss 0.5373/0.8215 | AUC 0.8481/0.5331 | lr 3.00e-04
+Epoch   9/25 | loss 0.5155/0.9051 | AUC 0.8645/0.5434 | lr 1.50e-04
+Epoch  10/25 | loss 0.4923/0.9288 | AUC 0.8796/0.5306 | lr 1.50e-04
+Early stopping at epoch 10.
+  Saved training curves → outputs/v44/training_curves.png
+
+Loaded best checkpoint (epoch 5).
+Best threshold (val): 0.48
+
+Test Accuracy : 0.4768
+Test ROC-AUC  : 0.4711
+
+Classification Report:
+               precision    recall  f1-score   support
+
+         0.0       0.56      0.41      0.48        87
+         1.0       0.41      0.56      0.48        64
+
+    accuracy                           0.48       151
+   macro avg       0.49      0.49      0.48       151
+weighted avg       0.50      0.48      0.48       151
+
+Confusion Matrix:
+ [[36 51]
+ [28 36]]
+  Saved metrics summary → outputs/v44/metrics_summary.txt
+  Saved attention heatmap → outputs/v44/attention_heatmap.png
+  Running t-SNE on 1500 samples (perplexity=30) …
+  Saved t-SNE plot → outputs/v44/tsne.png
+
+All outputs saved to: outputs/v44/

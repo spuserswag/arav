@@ -1,0 +1,50 @@
+Using fixed seed: 42
+Output directory: outputs/v58
+Loaded 35600 rows, 17 features, 114 segments.
+  price features : ['mid_price', 'micro_price', 'fractional_price', 'spread', 'obi_1', 'obi_10', 'obi_diff', 'tod_sin', 'tod_cos', 'logret_1000ms', 'logret_5000ms', 'logret_15000ms']
+  vol features   : ['volatility_fast', 'volatility_med', 'volatility_slow', 'vol_of_vol', 'obi_momentum']
+Split — train: 24920, val: 5340, test: 5340
+  Saved scaler → outputs/v58/scaler.pkl
+Sequences — train: (23175, 30, 17), val: (4823, 30, 17), test (stride=30): (151, 30, 17)
+Using device: cpu
+Model parameters: 145,601
+  Class balance — pos: 11827, neg: 11348, pos_weight: 0.959
+
+=== Vol-Transformer — Bitcoin Up/Down ===
+Epoch   1/25 | loss 0.6766/0.6799 | AUC 0.6089/0.4857 | lr 3.00e-04
+  ✓ Checkpoint saved (val AUC=0.4857)
+Epoch   2/25 | loss 0.6661/0.6879 | AUC 0.6464/0.5298 | lr 3.00e-04
+  ✓ Checkpoint saved (val AUC=0.5298)
+Epoch   3/25 | loss 0.6562/0.6923 | AUC 0.6770/0.5162 | lr 3.00e-04
+Epoch   4/25 | loss 0.6458/0.7082 | AUC 0.6861/0.5150 | lr 3.00e-04
+Epoch   5/25 | loss 0.6349/0.7050 | AUC 0.7120/0.5270 | lr 3.00e-04
+Epoch   6/25 | loss 0.6258/0.7396 | AUC 0.7322/0.4898 | lr 1.50e-04
+Epoch   7/25 | loss 0.6134/0.7529 | AUC 0.7419/0.4942 | lr 1.50e-04
+Early stopping at epoch 7.
+  Saved training curves → outputs/v58/training_curves.png
+
+Loaded best checkpoint (epoch 2).
+Best threshold (val): 0.47
+
+Test Accuracy : 0.4437
+Test ROC-AUC  : 0.4490
+
+Classification Report:
+               precision    recall  f1-score   support
+
+         0.0       0.52      0.40      0.45        87
+         1.0       0.38      0.50      0.43        64
+
+    accuracy                           0.44       151
+   macro avg       0.45      0.45      0.44       151
+weighted avg       0.46      0.44      0.45       151
+
+Confusion Matrix:
+ [[35 52]
+ [32 32]]
+  Saved metrics summary → outputs/v58/metrics_summary.txt
+  Saved attention heatmap → outputs/v58/attention_heatmap.png
+  Running t-SNE on 1500 samples (perplexity=30) …
+  Saved t-SNE plot → outputs/v58/tsne.png
+
+All outputs saved to: outputs/v58/
